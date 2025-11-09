@@ -1,4 +1,4 @@
-package arraysum
+package arrays
 
 import (
 	"testing"
