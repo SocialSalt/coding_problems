@@ -6,6 +6,18 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestGetIJ(t *testing.T) {
+	v := 8
+	i, j := getIJ(v)
+	require.Equal(t, 0, i)
+	require.Equal(t, 8, j)
+
+	v = 32
+	i, j = getIJ(v)
+	require.Equal(t, 3, i)
+	require.Equal(t, 5, j)
+}
+
 func TestSolver(t *testing.T) {
 	var board [][]byte
 	var solvedBoard [][]byte
@@ -33,6 +45,21 @@ func TestSolver(t *testing.T) {
 		{'3', '4', '5', '2', '8', '6', '1', '7', '9'},
 	}
 	solveSudoku(board)
+	printBoard(board)
 	require.Equal(t, solvedBoard, board)
 
+	board = [][]byte{
+		{'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+		{'.', '9', '.', '.', '1', '.', '.', '3', '.'},
+		{'.', '.', '6', '.', '2', '.', '7', '.', '.'},
+		{'.', '.', '.', '3', '.', '4', '.', '.', '.'},
+		{'2', '1', '.', '.', '.', '.', '.', '9', '8'},
+		{'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+		{'.', '.', '2', '5', '.', '6', '4', '.', '.'},
+		{'.', '8', '.', '.', '.', '.', '.', '1', '.'},
+		{'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+	}
+	solveSudoku(board)
+	printBoard(board)
+	require.Equal(t, solvedBoard, board)
 }
