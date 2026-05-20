@@ -42,10 +42,13 @@ func isNumUsed(num byte, i int, j int, row [9][10]bool, col [9][10]bool, box [9]
 func solveSudoku(board [][]byte) {
 	checker := copyBoard(board)
 
+	// these arrays are used to help us determine if we have entered a given digit into
+	// the board. row[i][digit] for example tells us if `digit` has been used in row i
 	row := [9][10]bool{}
 	col := [9][10]bool{}
 	box := [9][10]bool{}
 
+	// initialize the row, col and box arrays with the values that are already in them
 	for i := range 9 {
 		for j := range 9 {
 			if board[i][j] != '.' {
@@ -97,6 +100,7 @@ func solveSudoku(board [][]byte) {
 				}
 				board[i][j] += 1
 			}
+
 			//backtrack
 			if !isValid {
 				board[i][j] = '.'
